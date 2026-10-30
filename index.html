@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+  <title>Alya Diva's Sweet 20 Photobooth</title>
+  <meta name="description" content="Photobooth aesthetic perayaan ulang tahun ke-20 Alya Diva. Pilih frame manis, ambil foto bareng teman, hias dengan stiker lucu, dan unduh kenangan terbaikmu!">
+  <meta name="theme-color" content="#6b1426">
+  
+  <!-- Favicon Bertema Kue Ulang Tahun & Angka 20 -->
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ccircle cx='16' cy='16' r='15' fill='%236b1426'/%3E%3Ctext x='16' y='21' font-size='14' font-family='sans-serif' font-weight='900' fill='%23ffd699' text-anchor='middle'%3E20%3C/text%3E%3C/svg%3E">
+
+  <!-- Stylesheets -->
+  <link rel="stylesheet" href="/src/styles/tokens.css">
+  <link rel="stylesheet" href="/src/styles/base.css">
+  <link rel="stylesheet" href="/src/styles/components.css">
+  <link rel="stylesheet" href="/src/styles/screens.css">
+</head>
+<body>
+  <!-- Elemen Dekorasi Melayang di Latar Belakang (Floating Sparkles & Stars) -->
+  <div id="floating-bg" class="floating-bg" aria-hidden="true"></div>
+
+  <!-- Kontainer Aplikasi Utama -->
+  <div id="app" class="app-root">
+    <!-- Header Aplikasi & Indikator Tahap (Single Page) -->
+    <header class="app-header">
+      <div class="brand-badge">
+        <span class="sparkle-icon">✨</span>
+        <h1 class="brand-title">Alya Diva's Sweet 20</h1>
+        <span class="sparkle-icon">🎂</span>
+      </div>
+      
+      <!-- Stepper / Indikator Langkah -->
+      <nav class="step-indicator" aria-label="Alur Photobooth">
+        <div class="step-item active" data-step="1">
+          <span class="step-num">①</span>
+          <span class="step-label">Pilih Frame</span>
+        </div>
+        <div class="step-connector"></div>
+        <div class="step-item" data-step="2">
+          <span class="step-num">②</span>
+          <span class="step-label">Foto</span>
+        </div>
+        <div class="step-connector"></div>
+        <div class="step-item" data-step="3">
+          <span class="step-num">③</span>
+          <span class="step-label">Hasil & Hias</span>
+        </div>
+      </nav>
+    </header>
+
+    <!-- Kontainer Layar Dinamis -->
+    <main id="main-content" class="main-content">
+      <!-- Layar 1: Frame Selection (Default langsung tampil) -->
+      <section id="screen-frame-select" class="screen active"></section>
+
+      <!-- Layar 2: Kamera & Pengambilan Foto -->
+      <section id="screen-camera" class="screen"></section>
+
+      <!-- Layar 3: Hasil, Editor Stiker & Download -->
+      <section id="screen-result" class="screen"></section>
+    </main>
+  </div>
+
+  <!-- Modal Cadangan iOS & Pesan Dialog -->
+  <div id="modal-container" class="modal-overlay hidden" role="dialog" aria-modal="true"></div>
+
+  <!-- Input File Tersembunyi untuk Fallback Upload Galeri -->
+  <input type="file" id="gallery-file-input" accept="image/*" class="visually-hidden" aria-hidden="true">
+
+  <!-- Script Entri Utama -->
+  <script type="module" src="/src/main.js"></script>
+</body>
+</html>
+
