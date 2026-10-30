@@ -3,7 +3,7 @@
  * Centralized in-memory state store (tanpa localStorage, privasi penuh).
  */
 
-import FRAMES from '../data/frames.json';
+import { FRAMES } from '../data/frames.js';
 import ALL_STICKERS from '../data/stickers.js';
 
 class AppState {

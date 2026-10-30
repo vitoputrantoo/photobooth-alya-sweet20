@@ -3,7 +3,7 @@
  * Layar 1: Pemilihan Frame Photobooth (Halaman Pertama Tanpa Login/Landing Page)
  */
 
-import FRAMES from '../data/frames.json';
+import { FRAMES } from '../data/frames.js';
 import { state } from '../lib/state.js';
 import { renderComposite } from '../lib/compositor.js';
 

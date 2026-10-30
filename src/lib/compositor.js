@@ -22,9 +22,9 @@ export function resolveAssetPath(path) {
   if (path.startsWith('data:') || path.startsWith('blob:') || path.startsWith('http://') || path.startsWith('https://')) {
     return path;
   }
-  const base = import.meta.env.BASE_URL || './';
-  const clean = path.startsWith('/') ? path.slice(1) : path;
-  return base.endsWith('/') ? `${base}${clean}` : `${base}/${clean}`;
+  if (path.startsWith('./')) return path;
+  if (path.startsWith('/')) return '.' + path;
+  return './' + path;
 }
 
 export async function loadImage(src) {
