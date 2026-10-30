@@ -228,6 +228,9 @@ function drawPhotoInSlot(ctx, photo, slot, scale = 1, isMirrored = false) {
     return;
   }
 
+  // Bleed 1.5px memastikan foto sedikit masuk ke bawah border frame,
+  // menghilangkan celah garis putih/abu di tepi slot secara sempurna
+  const bleed = 1.5 * scale;
   const sx = slot.x * scale;
   const sy = slot.y * scale;
   const sw = slot.width * scale;
@@ -235,12 +238,12 @@ function drawPhotoInSlot(ctx, photo, slot, scale = 1, isMirrored = false) {
 
   ctx.save();
 
-  // Clipping path untuk radius sudut
+  // Clipping path slot foto
   ctx.beginPath();
   if (slot.radius) {
-    ctx.roundRect(sx, sy, sw, sh, slot.radius * scale);
+    ctx.roundRect(sx - bleed, sy - bleed, sw + bleed * 2, sh + bleed * 2, (slot.radius + 1) * scale);
   } else {
-    ctx.rect(sx, sy, sw, sh);
+    ctx.rect(sx - bleed, sy - bleed, sw + bleed * 2, sh + bleed * 2);
   }
   ctx.clip();
 
@@ -251,20 +254,27 @@ function drawPhotoInSlot(ctx, photo, slot, scale = 1, isMirrored = false) {
   const photoAspect = pw / ph;
   const slotAspect = sw / sh;
 
+  const targetW = sw + bleed * 2;
+  const targetH = sh + bleed * 2;
+  const targetX = sx - bleed;
+  const targetY = sy - bleed;
+
   let dw, dh, dx, dy;
   if (photoAspect > slotAspect) {
-    dh = sh;
-    dw = sh * photoAspect;
-    dx = sx - (dw - sw) / 2;
-    dy = sy;
+    // Foto lebih lebar dari slot -> fit tinggi, pusatkan horizontal
+    dh = targetH;
+    dw = targetH * photoAspect;
+    dx = targetX - (dw - targetW) / 2;
+    dy = targetY;
   } else {
-    dw = sw;
-    dh = sw / photoAspect;
-    dx = sx;
-    dy = sy - (dh - sh) / 2;
+    // Foto lebih tinggi dari slot -> fit lebar, pusatkan vertikal
+    dw = targetW;
+    dh = targetW / photoAspect;
+    dx = targetX;
+    dy = targetY - (dh - targetH) / 2;
   }
 
-  // Handle mirror selfie (Hanya foto selfie yang di-mirror, teks & stiker tidak)
+  // Handle mirror selfie (Hanya foto kamera depan yang di-mirror, upload galeri tidak)
   const isUpload = Boolean(photo.isUpload || imgToDraw.isUpload);
   if (isMirrored && !isUpload) {
     ctx.translate(dx + dw, dy);
@@ -360,36 +370,12 @@ export async function renderComposite(options) {
   ctx.drawImage(photosCanvas, 0, 0);
 
   // --- LAYER 3: Gambar Frame Artwork (bila ada file referensi) ---
+  // Frame PNG memiliki transparansi presisi pixel pada slot foto, sehingga artwork
+  // (border, ornamen, tekstur) menutupi tepi foto di Layer 2 dengan sangat rapi dan mulus.
   if (frame.file) {
     const frameImg = await loadImage(frame.file);
     if (frameImg) {
-      // Buat canvas sementara untuk frame berlubang (guaranteed transparent slots)
-      const frameCanvas = document.createElement('canvas');
-      frameCanvas.width = canvasW;
-      frameCanvas.height = canvasH;
-      const frameCtx = frameCanvas.getContext('2d');
-      frameCtx.drawImage(frameImg, 0, 0, canvasW, canvasH);
-
-      // Lubangi area slot foto dengan destination-out agar foto di Layer 2 tidak tertutup
-      frameCtx.save();
-      frameCtx.globalCompositeOperation = 'destination-out';
-      frame.slots.forEach(slot => {
-        const sx = Math.round(slot.x * scale);
-        const sy = Math.round(slot.y * scale);
-        const sw = Math.round(slot.width * scale);
-        const sh = Math.round(slot.height * scale);
-        
-        frameCtx.beginPath();
-        if (slot.radius) {
-          frameCtx.roundRect(sx, sy, sw, sh, slot.radius * scale);
-        } else {
-          frameCtx.rect(sx, sy, sw, sh);
-        }
-        frameCtx.fill();
-      });
-      frameCtx.restore();
-
-      ctx.drawImage(frameCanvas, 0, 0);
+      ctx.drawImage(frameImg, 0, 0, canvasW, canvasH);
     }
   }
 

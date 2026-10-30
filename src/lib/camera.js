@@ -134,7 +134,7 @@ class CameraManager {
   /**
    * Mengambil gambar snapshot resolusi penuh dari video kamera
    */
-  captureSnapshot() {
+  captureSnapshot(cropRect = null) {
     if (!this.videoElement || !this.videoElement.videoWidth) {
       throw new Error('Kamera belum siap.');
     }
@@ -142,19 +142,34 @@ class CameraManager {
     const vw = this.videoElement.videoWidth;
     const vh = this.videoElement.videoHeight;
     const canvas = document.createElement('canvas');
-    canvas.width = vw;
-    canvas.height = vh;
     const ctx = canvas.getContext('2d');
 
-    // Salin frame video saat ini
-    ctx.drawImage(this.videoElement, 0, 0, vw, vh);
+    if (cropRect && cropRect.width > 0 && cropRect.height > 0) {
+      canvas.width = Math.round(cropRect.width);
+      canvas.height = Math.round(cropRect.height);
+      ctx.drawImage(
+        this.videoElement,
+        Math.round(cropRect.x),
+        Math.round(cropRect.y),
+        Math.round(cropRect.width),
+        Math.round(cropRect.height),
+        0,
+        0,
+        canvas.width,
+        canvas.height
+      );
+    } else {
+      canvas.width = vw;
+      canvas.height = vh;
+      ctx.drawImage(this.videoElement, 0, 0, vw, vh);
+    }
 
     this.playShutterSound();
 
     return {
       canvas,
-      width: vw,
-      height: vh,
+      width: canvas.width,
+      height: canvas.height,
       isUpload: false
     };
   }

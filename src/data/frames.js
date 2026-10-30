@@ -1,6 +1,6 @@
 /**
  * src/data/frames.js
- * Definisi 10 Frame Photobooth Alya Diva Sweet 20
+ * Definisi 12 Frame Photobooth Alya Diva Sweet 20
  */
 
 export const FRAMES = [
@@ -554,6 +554,110 @@ export const FRAMES = [
       "color": "#33141c",
       "scriptColor": "#6b1426",
       "bgBanner": false
+    }
+  },
+  {
+    "id": "frame-gingham-grid4",
+    "nama": "Gingham Grid Sweet 20 (4 Foto)",
+    "kategori": "grid",
+    "layoutType": "grid-2x2",
+    "file": "./assets/frames/frame-gingham-grid4.png",
+    "lebarPx": 1152,
+    "tinggiPx": 2048,
+    "deskripsi": "Grid 2x2 aesthetic bernuansa merah gingham polkadot, hiasan bunga, tombol kancing, dan bintang imut.",
+    "slots": [
+      {
+        "order": 1,
+        "x": 220,
+        "y": 558,
+        "width": 335,
+        "height": 453,
+        "radius": 0
+      },
+      {
+        "order": 2,
+        "x": 575,
+        "y": 558,
+        "width": 342,
+        "height": 453,
+        "radius": 0
+      },
+      {
+        "order": 3,
+        "x": 220,
+        "y": 1018,
+        "width": 335,
+        "height": 407,
+        "radius": 0
+      },
+      {
+        "order": 4,
+        "x": 575,
+        "y": 1018,
+        "width": 342,
+        "height": 407,
+        "radius": 0
+      }
+    ],
+    "textArea": {
+      "x": 220,
+      "y": 1520,
+      "width": 700,
+      "height": 320
+    },
+    "captionStyle": {
+      "title": "Happy Birthday",
+      "name": "Alya Diva",
+      "sub": "Sweet 20",
+      "date": "18 Oktober 2026",
+      "align": "center",
+      "color": "#fff5ea",
+      "scriptColor": "#ffd699",
+      "bgBanner": true
+    }
+  },
+  {
+    "id": "frame-gingham-polaroid2",
+    "nama": "Gingham Duo Polaroid (2 Foto)",
+    "kategori": "polaroid",
+    "layoutType": "polaroid-2",
+    "file": "./assets/frames/frame-gingham-polaroid2.png",
+    "lebarPx": 1152,
+    "tinggiPx": 2048,
+    "deskripsi": "Duo polaroid bertumpuk di atas kain gingham merah vintage aesthetic yang manis.",
+    "slots": [
+      {
+        "order": 1,
+        "x": 171,
+        "y": 360,
+        "width": 515,
+        "height": 380,
+        "radius": 0
+      },
+      {
+        "order": 2,
+        "x": 554,
+        "y": 790,
+        "width": 526,
+        "height": 500,
+        "radius": 0
+      }
+    ],
+    "textArea": {
+      "x": 80,
+      "y": 1400,
+      "width": 460,
+      "height": 300
+    },
+    "captionStyle": {
+      "title": "Happy Birthday",
+      "name": "Alya Diva",
+      "sub": "Sweet 20",
+      "date": "18 Oktober 2026",
+      "align": "center",
+      "color": "#fff5ea",
+      "scriptColor": "#ffd699",
+      "bgBanner": true
     }
   }
 ];

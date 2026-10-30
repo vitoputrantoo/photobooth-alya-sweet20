@@ -193,6 +193,57 @@ export class CameraScreen {
     });
   }
 
+  computeCropForCurrentSlot() {
+    if (!this.videoElem || !this.videoElem.videoWidth) return null;
+
+    const card = this.container.querySelector('#cam-viewport-card');
+    const overlay = this.container.querySelector('#slot-guide-overlay');
+    if (!card || !overlay) return null;
+
+    const cardRect = card.getBoundingClientRect();
+    const guideRect = overlay.getBoundingClientRect();
+
+    const V_w = cardRect.width;
+    const V_h = cardRect.height;
+    const W_vid = this.videoElem.videoWidth;
+    const H_vid = this.videoElem.videoHeight;
+
+    // object-fit: cover scaling
+    const scale = Math.max(V_w / W_vid, V_h / H_vid);
+    const W_rend = W_vid * scale;
+    const H_rend = H_vid * scale;
+
+    const offsetX = (V_w - W_rend) / 2;
+    const offsetY = (V_h - H_rend) / 2;
+
+    const guideLeft = guideRect.left - cardRect.left;
+    const guideTop = guideRect.top - cardRect.top;
+    const guideW = guideRect.width;
+    const guideH = guideRect.height;
+
+    const relLeft = guideLeft - offsetX;
+    const relTop = guideTop - offsetY;
+
+    let srcX = relLeft / scale;
+    const srcY = Math.max(0, relTop / scale);
+    const srcW = Math.min(W_vid, guideW / scale);
+    const srcH = Math.min(H_vid, guideH / scale);
+
+    // If facingMode is user (mirrored horizontally):
+    if (state.facingMode === 'user') {
+      srcX = W_vid - (srcX + srcW);
+    }
+
+    srcX = Math.max(0, Math.min(W_vid - srcW, srcX));
+
+    return {
+      x: srcX,
+      y: srcY,
+      width: srcW,
+      height: srcH
+    };
+  }
+
   async triggerShutter() {
     if (this.isCountingDown) return;
     this.isCountingDown = true;
@@ -203,9 +254,10 @@ export class CameraScreen {
     // Flash putih
     this.flashEffect();
 
-    // Ambil gambar
+    // Ambil gambar dengan crop presisi sesuai panduan slot di layar
     try {
-      const snapshot = camera.captureSnapshot();
+      const cropRect = this.computeCropForCurrentSlot();
+      const snapshot = camera.captureSnapshot(cropRect);
       state.setPhotoForSlot(state.currentSlotIndex, snapshot);
 
       // Cari slot berikutnya yang masih kosong
