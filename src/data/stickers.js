@@ -480,6 +480,238 @@ const AESTHETIC_SVGS = [
   }
 ];
 
+// 4. STIKER ELEMEN KUCING & MEME TERBARU (38 Buah)
+export const NEW_ELEMENT_STICKERS = [
+  {
+    "id": "elem-illust-1",
+    "nama": "Headphone Phone",
+    "kategori": "element",
+    "src": "./assets/stickers/elements/elem-cat-headphone-phone.png"
+  },
+  {
+    "id": "elem-illust-2",
+    "nama": "Meow Paperbag",
+    "kategori": "element",
+    "src": "./assets/stickers/elements/elem-cat-meow-paperbag.png"
+  },
+  {
+    "id": "elem-illust-3",
+    "nama": "Hug Heart",
+    "kategori": "element",
+    "src": "./assets/stickers/elements/elem-cat-hug-heart.png"
+  },
+  {
+    "id": "elem-illust-4",
+    "nama": "Tulip Cup",
+    "kategori": "element",
+    "src": "./assets/stickers/elements/elem-cat-tulip-cup.png"
+  },
+  {
+    "id": "elem-illust-5",
+    "nama": "Basket Tulips",
+    "kategori": "element",
+    "src": "./assets/stickers/elements/elem-cat-basket-tulips.png"
+  },
+  {
+    "id": "elem-illust-6",
+    "nama": "Sleep Blanket",
+    "kategori": "element",
+    "src": "./assets/stickers/elements/elem-cat-sleep-blanket.png"
+  },
+  {
+    "id": "elem-illust-7",
+    "nama": "Play Bunny",
+    "kategori": "element",
+    "src": "./assets/stickers/elements/elem-cat-play-bunny.png"
+  },
+  {
+    "id": "elem-illust-8",
+    "nama": "Pink Bonnet",
+    "kategori": "element",
+    "src": "./assets/stickers/elements/elem-cat-pink-bonnet.png"
+  },
+  {
+    "id": "elem-illust-9",
+    "nama": "Strawberry Pancakes",
+    "kategori": "element",
+    "src": "./assets/stickers/elements/elem-cat-strawberry-pancakes.png"
+  },
+  {
+    "id": "elem-illust-10",
+    "nama": "Fragile Box",
+    "kategori": "element",
+    "src": "./assets/stickers/elements/elem-cat-fragile-box.png"
+  },
+  {
+    "id": "elem-illust-11",
+    "nama": "Black Camera",
+    "kategori": "element",
+    "src": "./assets/stickers/elements/elem-cat-black-camera.png"
+  },
+  {
+    "id": "elem-illust-12",
+    "nama": "Book Coffee",
+    "kategori": "element",
+    "src": "./assets/stickers/elements/elem-cat-book-coffee.png"
+  },
+  {
+    "id": "elem-illust-13",
+    "nama": "Hug Me Heart",
+    "kategori": "element",
+    "src": "./assets/stickers/elements/elem-cat-hug-me-heart.png"
+  },
+  {
+    "id": "elem-illust-14",
+    "nama": "Cloud Stars",
+    "kategori": "element",
+    "src": "./assets/stickers/elements/elem-cat-cloud-stars.png"
+  },
+  {
+    "id": "elem-illust-15",
+    "nama": "Frog Hoodie",
+    "kategori": "element",
+    "src": "./assets/stickers/elements/elem-cat-frog-hoodie.png"
+  },
+  {
+    "id": "elem-illust-16",
+    "nama": "Window Moon",
+    "kategori": "element",
+    "src": "./assets/stickers/elements/elem-cat-window-moon.png"
+  },
+  {
+    "id": "elem-illust-17",
+    "nama": "Bouquet Tulips",
+    "kategori": "element",
+    "src": "./assets/stickers/elements/elem-cat-bouquet-tulips.png"
+  },
+  {
+    "id": "elem-illust-18",
+    "nama": "Teddy Costume",
+    "kategori": "element",
+    "src": "./assets/stickers/elements/elem-cat-teddy-costume.png"
+  },
+  {
+    "id": "elem-illust-19",
+    "nama": "Blue Fish Plush",
+    "kategori": "element",
+    "src": "./assets/stickers/elements/elem-cat-blue-fish-plush.png"
+  },
+  {
+    "id": "elem-illust-20",
+    "nama": "Sleep Donut Cushion",
+    "kategori": "element",
+    "src": "./assets/stickers/elements/elem-cat-sleep-donut-cushion.png"
+  },
+  {
+    "id": "elem-illust-21",
+    "nama": "Beanbag Chips",
+    "kategori": "element",
+    "src": "./assets/stickers/elements/elem-cat-beanbag-chips.png"
+  },
+  {
+    "id": "elem-illust-22",
+    "nama": "Blossom Giftbox",
+    "kategori": "element",
+    "src": "./assets/stickers/elements/elem-cat-blossom-giftbox.png"
+  },
+  {
+    "id": "elem-meme-1",
+    "nama": "Kucing Topi Hiu Empeng",
+    "kategori": "element",
+    "src": "./assets/stickers/elements/elem-cat-shark-pacifier-1.png"
+  },
+  {
+    "id": "elem-meme-2",
+    "nama": "Kucing Ngambek Pita Pink",
+    "kategori": "element",
+    "src": "./assets/stickers/elements/elem-cat-angry-bow.png"
+  },
+  {
+    "id": "elem-meme-3",
+    "nama": "Kucing Hiu Marah",
+    "kategori": "element",
+    "src": "./assets/stickers/elements/elem-cat-shark-angry-1.png"
+  },
+  {
+    "id": "elem-meme-4",
+    "nama": "Kucing Kedip Bunga Pink",
+    "kategori": "element",
+    "src": "./assets/stickers/elements/elem-cat-winking-flower.png"
+  },
+  {
+    "id": "elem-meme-5",
+    "nama": "Kucing Wide Angle Pita",
+    "kategori": "element",
+    "src": "./assets/stickers/elements/elem-cat-big-head-bows.png"
+  },
+  {
+    "id": "elem-meme-6",
+    "nama": "Kucing Minum Es Matcha",
+    "kategori": "element",
+    "src": "./assets/stickers/elements/elem-cat-matcha-drink.png"
+  },
+  {
+    "id": "elem-meme-7",
+    "nama": "Kucing Kacamata Buket Tulip",
+    "kategori": "element",
+    "src": "./assets/stickers/elements/elem-cat-glasses-tulips.png"
+  },
+  {
+    "id": "elem-meme-8",
+    "nama": "Kucing Kacamata Baca Koran",
+    "kategori": "element",
+    "src": "./assets/stickers/elements/elem-cat-reading-paper.png"
+  },
+  {
+    "id": "elem-meme-9",
+    "nama": "Kucing Tatap Atas Kumis Pink",
+    "kategori": "element",
+    "src": "./assets/stickers/elements/elem-cat-whiskers-look-up.png"
+  },
+  {
+    "id": "elem-meme-10",
+    "nama": "Kucing Berdiri Pita Pink",
+    "kategori": "element",
+    "src": "./assets/stickers/elements/elem-cat-standing-bow.png"
+  },
+  {
+    "id": "elem-meme-11",
+    "nama": "Kucing Keren Kacamata Hitam",
+    "kategori": "element",
+    "src": "./assets/stickers/elements/elem-cat-cool-sunglasses.png"
+  },
+  {
+    "id": "elem-meme-12",
+    "nama": "Kucing Kasur Main HP",
+    "kategori": "element",
+    "src": "./assets/stickers/elements/elem-cat-sad-phone-bed.png"
+  },
+  {
+    "id": "elem-meme-13",
+    "nama": "Kucing Tertawa Tutup Mulut",
+    "kategori": "element",
+    "src": "./assets/stickers/elements/elem-cat-laughing-paw.png"
+  },
+  {
+    "id": "elem-meme-14",
+    "nama": "Kucing Hiu Duduk Empeng",
+    "kategori": "element",
+    "src": "./assets/stickers/elements/elem-cat-shark-pacifier-2.png"
+  },
+  {
+    "id": "elem-meme-15",
+    "nama": "Kucing Hiu Berdiri Kesal",
+    "kategori": "element",
+    "src": "./assets/stickers/elements/elem-cat-shark-angry-2.png"
+  },
+  {
+    "id": "elem-meme-16",
+    "nama": "Kucing Headphone Nyanyi Seru",
+    "kategori": "element",
+    "src": "./assets/stickers/elements/elem-cat-headphones-singing.png"
+  }
+];
+
 // Konversi SVG array menjadi format stiker utuh dengan src DataURL
 const BUILTIN_STICKERS = [
   ...BIRTHDAY_SVGS.map(s => ({ id: s.id, nama: s.nama, kategori: s.kategori, src: svgToDataUrl(s.svg) })),
@@ -491,11 +723,13 @@ const BUILTIN_STICKERS = [
 export const ALL_STICKERS = [
   ...REFERENCE_CATS,
   ...REFERENCE_STAMPS,
+  ...NEW_ELEMENT_STICKERS,
   ...BUILTIN_STICKERS
 ];
 
 export const STICKER_CATEGORIES = [
-  { id: 'all', nama: 'Semua (100)' },
+  { id: 'all', nama: 'Semua (138)' },
+  { id: 'element', nama: 'Element Lucu 🐾' },
   { id: 'ultah', nama: 'Ulang Tahun 🎂' },
   { id: 'kucing', nama: 'Kucing Ref 🐱' },
   { id: 'prangko', nama: 'Prangko Ref 💌' },

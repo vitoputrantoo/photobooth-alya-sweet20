@@ -170,7 +170,7 @@ class AppState {
 
     // Pilih 4 sampai 6 stiker manis (kucing, pita, bunga, lilin, sparkle)
     const candidates = ALL_STICKERS.filter(s => 
-      ['ultah', 'hati-kilau', 'aesthetic', 'kucing'].includes(s.kategori)
+      ['ultah', 'hati-kilau', 'aesthetic', 'kucing', 'element'].includes(s.kategori)
     );
     const chosenCount = 5;
     const newStickers = [];
