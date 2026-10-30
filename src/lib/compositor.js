@@ -244,9 +244,10 @@ function drawPhotoInSlot(ctx, photo, slot, scale = 1, isMirrored = false) {
   }
   ctx.clip();
 
-  // Hitung cover crop
-  const pw = photo.width;
-  const ph = photo.height;
+  // Dukung photo baik berupa HTMLCanvasElement maupun objek { canvas, isUpload }
+  const imgToDraw = photo.canvas || photo;
+  const pw = imgToDraw.width || photo.width || 800;
+  const ph = imgToDraw.height || photo.height || 600;
   const photoAspect = pw / ph;
   const slotAspect = sw / sh;
 
@@ -263,13 +264,14 @@ function drawPhotoInSlot(ctx, photo, slot, scale = 1, isMirrored = false) {
     dy = sy - (dh - sh) / 2;
   }
 
-  // Handle mirror selfie (Hanya foto yang di-mirror, teks & stiker tidak)
-  if (isMirrored && !photo.isUpload) {
+  // Handle mirror selfie (Hanya foto selfie yang di-mirror, teks & stiker tidak)
+  const isUpload = Boolean(photo.isUpload || imgToDraw.isUpload);
+  if (isMirrored && !isUpload) {
     ctx.translate(dx + dw, dy);
     ctx.scale(-1, 1);
-    ctx.drawImage(photo, 0, 0, dw, dh);
+    ctx.drawImage(imgToDraw, 0, 0, dw, dh);
   } else {
-    ctx.drawImage(photo, dx, dy, dw, dh);
+    ctx.drawImage(imgToDraw, dx, dy, dw, dh);
   }
 
   ctx.restore();
@@ -361,7 +363,33 @@ export async function renderComposite(options) {
   if (frame.file) {
     const frameImg = await loadImage(frame.file);
     if (frameImg) {
-      ctx.drawImage(frameImg, 0, 0, canvasW, canvasH);
+      // Buat canvas sementara untuk frame berlubang (guaranteed transparent slots)
+      const frameCanvas = document.createElement('canvas');
+      frameCanvas.width = canvasW;
+      frameCanvas.height = canvasH;
+      const frameCtx = frameCanvas.getContext('2d');
+      frameCtx.drawImage(frameImg, 0, 0, canvasW, canvasH);
+
+      // Lubangi area slot foto dengan destination-out agar foto di Layer 2 tidak tertutup
+      frameCtx.save();
+      frameCtx.globalCompositeOperation = 'destination-out';
+      frame.slots.forEach(slot => {
+        const sx = Math.round(slot.x * scale);
+        const sy = Math.round(slot.y * scale);
+        const sw = Math.round(slot.width * scale);
+        const sh = Math.round(slot.height * scale);
+        
+        frameCtx.beginPath();
+        if (slot.radius) {
+          frameCtx.roundRect(sx, sy, sw, sh, slot.radius * scale);
+        } else {
+          frameCtx.rect(sx, sy, sw, sh);
+        }
+        frameCtx.fill();
+      });
+      frameCtx.restore();
+
+      ctx.drawImage(frameCanvas, 0, 0);
     }
   }
 

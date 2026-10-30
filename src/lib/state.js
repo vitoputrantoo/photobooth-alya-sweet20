@@ -16,7 +16,7 @@ class AppState {
     this.currentScreen = 'frame-select'; // 'frame-select' | 'camera' | 'result'
     this.selectedFrameId = FRAMES[0].id;
     this.countdownTimer = 3; // 3, 5, 10
-    this.capturedPhotos = []; // array of ImageBitmap or HTMLImageElement
+    this.capturedPhotos = new Array(FRAMES[0].slots.length).fill(null); // array of ImageBitmap or HTMLImageElement
     this.currentSlotIndex = 0;
     this.activeFilter = 'normal'; // 'normal' | 'bw' | 'vintage' | 'soft-pink' | 'warm' | 'dreamy'
     this.appliedStickers = [];

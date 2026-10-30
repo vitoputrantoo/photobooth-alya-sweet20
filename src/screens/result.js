@@ -124,7 +124,7 @@ export class ResultScreen {
     if (!this.canvasElem) return;
 
     const frame = state.currentFrame;
-    const photos = state.capturedPhotos.map(p => p ? p.canvas : null);
+    const photos = state.capturedPhotos;
     const filter = state.activeFilter;
     const customCaption = state.customCaption;
     const captionFont = state.captionFont;

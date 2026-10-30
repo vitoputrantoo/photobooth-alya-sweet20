@@ -277,7 +277,7 @@ export const FRAMES = [
     "nama": "Picnic Berries Trio (3 Polaroid)",
     "kategori": "polaroid",
     "layoutType": "polaroid-3",
-    "file": "./assets/frames/frame-polaroid-picnic.jpg",
+    "file": "./assets/frames/frame-polaroid-picnic.png",
     "lebarPx": 736,
     "tinggiPx": 1304,
     "deskripsi": "Trio polaroid landscape di atas selimut piknik marun berbalut pita dan balon.",

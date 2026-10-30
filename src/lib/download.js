@@ -88,7 +88,7 @@ export function showIosSaveModal(imageUrl, filename) {
  */
 export async function exportPhotoboothImage(format = 'png', quality = 0.92) {
   const frame = state.currentFrame;
-  const photos = state.capturedPhotos.map(p => p ? p.canvas : null);
+  const photos = state.capturedPhotos;
   const stickers = state.appliedStickers;
   const filter = state.activeFilter;
   const customCaption = state.customCaption;
@@ -131,7 +131,7 @@ export async function sharePhotoboothImage() {
   }
 
   const frame = state.currentFrame;
-  const photos = state.capturedPhotos.map(p => p ? p.canvas : null);
+  const photos = state.capturedPhotos;
   const stickers = state.appliedStickers;
   const filter = state.activeFilter;
   const customCaption = state.customCaption;
